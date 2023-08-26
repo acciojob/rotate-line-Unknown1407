@@ -3,10 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Rotating Line</title>
-  <style></style>
+  <style>
+    #line {
+      position: absolute;
+      width: 200px;
+      height: 2x;
+      background-color: black;
+      top: 50%;
+      left: 50%;
+      transform-origin: 50% 0%;
+    }
+  </style>
 </head>
 <body>
   <div id="line"></div>
-  <script src="script.js"></script>
+  <script>
+    const line = document.getElementById('line');
+    let rotation = 0;
+
+    function rotateLine() {
+      rotation += 1;
+      line.style.transform = `rotate(${rotation}deg)`;
+      requestAnimationFrame(rotateLine);
+    }
+
+    rotateLine(); // Start the rotation
+  </script>
 </body>
 </html>
